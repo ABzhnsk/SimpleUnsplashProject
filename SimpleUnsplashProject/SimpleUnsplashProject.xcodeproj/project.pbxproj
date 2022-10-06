@@ -15,6 +15,8 @@
 		B137003F28EED9AC007F4C5C /* FavouritePicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B137003E28EED9AC007F4C5C /* FavouritePicturesViewController.swift */; };
 		B137004128EED9F5007F4C5C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B137004028EED9F5007F4C5C /* DetailsViewController.swift */; };
 		B137004328EEDCF1007F4C5C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B137004228EEDCF1007F4C5C /* SearchViewController.swift */; };
+		B143C61C28EEEB3E00DAADE9 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C61B28EEEB3D00DAADE9 /* SearchCollectionViewCell.swift */; };
+		B143C61F28EEF18B00DAADE9 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C61E28EEF18B00DAADE9 /* ReusableViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		B137003E28EED9AC007F4C5C /* FavouritePicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePicturesViewController.swift; sourceTree = "<group>"; };
 		B137004028EED9F5007F4C5C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		B137004228EEDCF1007F4C5C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B143C61B28EEEB3D00DAADE9 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		B143C61E28EEF18B00DAADE9 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			children = (
 				B137002228EECAC3007F4C5C /* AppDelegate.swift */,
 				B137002428EECAC3007F4C5C /* SceneDelegate.swift */,
+				B143C61D28EEEB4100DAADE9 /* Cell */,
 				B137003628EECEFB007F4C5C /* View */,
 				B137002B28EECAC4007F4C5C /* Assets.xcassets */,
 				B137002D28EECAC4007F4C5C /* LaunchScreen.storyboard */,
@@ -111,6 +116,15 @@
 				B137004228EEDCF1007F4C5C /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		B143C61D28EEEB4100DAADE9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B143C61B28EEEB3D00DAADE9 /* SearchCollectionViewCell.swift */,
+				B143C61E28EEF18B00DAADE9 /* ReusableViewProtocol.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +202,8 @@
 				B137002328EECAC3007F4C5C /* AppDelegate.swift in Sources */,
 				B137002528EECAC3007F4C5C /* SceneDelegate.swift in Sources */,
 				B137003F28EED9AC007F4C5C /* FavouritePicturesViewController.swift in Sources */,
+				B143C61F28EEF18B00DAADE9 /* ReusableViewProtocol.swift in Sources */,
+				B143C61C28EEEB3E00DAADE9 /* SearchCollectionViewCell.swift in Sources */,
 				B137004128EED9F5007F4C5C /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
