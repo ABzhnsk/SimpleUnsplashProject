@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  DetailsViewController.swift
 //  SimpleUnsplashProject
 //
 //  Created by Anna Buzhinskaya on 06.10.2022.
@@ -7,10 +7,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
-
