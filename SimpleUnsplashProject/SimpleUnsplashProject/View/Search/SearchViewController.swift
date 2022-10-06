@@ -51,9 +51,6 @@ extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         cell.config(image: UIImage(systemName: "house"))
-        cell.buttonTapCallback = {
-            print("Like")
-        }
         return cell
     }
 }
