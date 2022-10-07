@@ -6,22 +6,22 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class NetworkDataFetch {
     static let shared = NetworkDataFetch()
     
     private init() {}
     
-    func fetchPhoto(api: API, response: @escaping (Result<PhotoModel, APIError>) -> Void) {
+    func fetchPhoto(api: API, response: @escaping (Result<[PhotoModel], APIError>) -> Void) {
         NetworkRequest.shared.requestData(api: api) { result in
             switch result {
             case .success(let data):
                 do {
-                    let jsonData = try JSONDecoder().decode(PhotoModel.self, from: data)
-                    response(.success(jsonData))
-                } catch {
-                    response(.failure(.decodeError))
-                }
+                    let json = JSON(data)
+                    let photoJSON = json["results"].arrayValue.compactMap { PhotoModel($0) }
+                    response(.success(photoJSON))
+                } 
             case .failure(_):
                 response(.failure(.invalidDataError))
             }

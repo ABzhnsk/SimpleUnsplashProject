@@ -43,9 +43,8 @@ class SearchCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func config(photo: Photos) {
-        guard let photoUrl = photo.urls?.full else { return }
-        self.imageView.load(from: photoUrl)
+    func config(photo: PhotoModel) {
+        self.imageView.load(from: photo.imageUrl)
     }
 }
 

@@ -6,26 +6,20 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct PhotoModel: Codable {
-    let total: Int?
-    let totalPages: Int?
-    let results: [Photos]
-}
-
-struct Photos: Codable {
-    let id: String?
-    let urls: Urls?
-    let user: Users?
-    let createdAt: String?
-    let likes: Int?
-}
-
-struct Urls: Codable {
-    let full: String?
-}
-
-struct Users: Codable {
-    let name: String?
-    let location: String?
+    let imageUrl: String
+    let userName: String
+    let userLocation: String
+    let createdAt: String
+    let likes: Int
+    
+    init(_ json: JSON) {
+        self.imageUrl = json["urls"]["full"].stringValue
+        self.userName = json["user"]["username"].stringValue
+        self.userLocation = json["user"]["location"].stringValue
+        self.createdAt = json["created_at"].stringValue
+        self.likes = json["likes"].intValue
+    }
 }

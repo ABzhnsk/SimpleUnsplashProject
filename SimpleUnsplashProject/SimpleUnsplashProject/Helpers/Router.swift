@@ -14,7 +14,7 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func setupTabBar()
-    func showDetailedViewFrom(searchPhoto: Photos, image: UIImage)
+    func showDetailedViewFrom(searchPhoto: PhotoModel, image: UIImage)
     func showDetailedViewFrom(favoritePhoto: FavouritePhoto, image: UIImage)
 }
 
@@ -66,12 +66,12 @@ class Router: RouterProtocol {
             tabBarController.tabBar.tintColor = .black
         }
     }
-    public func showDetailedViewFrom(searchPhoto: Photos, image: UIImage) {
+    public func showDetailedViewFrom(searchPhoto: PhotoModel, image: UIImage) {
         var parameters = [String: String]()
-        parameters["userName"] = searchPhoto.user?.name
-        parameters["userLocation"] = searchPhoto.user?.location
+        parameters["userName"] = searchPhoto.userName
+        parameters["userLocation"] = searchPhoto.userLocation
         parameters["createdAt"] = searchPhoto.createdAt
-        parameters["countLikes"] = Formatter.currency.string(from: NSNumber(value: searchPhoto.likes ?? 0))
+        parameters["countLikes"] = Formatter.currency.string(from: NSNumber(value: searchPhoto.likes))
         guard let detailViewController = builder?.createDetailScreen(router: self,
                                                                      parameters: parameters,
                                                                      dataPicture: image)

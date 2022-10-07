@@ -28,7 +28,7 @@ enum API {
     var query: [String: String] {
         switch self {
         case let .getSearch(query, page):
-            return ["query": query, "page": "\(page)"]
+            return ["query": query, "per_page": "\(page)"]
         }
     }
     var header: [String: String] {
