@@ -24,6 +24,8 @@
 		B143C62F28EF4D2B00DAADE9 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C62E28EF4D2B00DAADE9 /* Secrets.swift */; };
 		B143C63128EF4D8A00DAADE9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C63028EF4D8A00DAADE9 /* API.swift */; };
 		B143C63328EF508700DAADE9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C63228EF508700DAADE9 /* APIError.swift */; };
+		B1C55ACE28F033F400DB9F5A /* SearchViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C55ACD28F033F400DB9F5A /* SearchViewProtocol.swift */; };
+		B1C55AD128F0356800DB9F5A /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C55AD028F0356800DB9F5A /* AlertBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		B143C62E28EF4D2B00DAADE9 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		B143C63028EF4D8A00DAADE9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B143C63228EF508700DAADE9 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		B1C55ACD28F033F400DB9F5A /* SearchViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewProtocol.swift; sourceTree = "<group>"; };
+		B1C55AD028F0356800DB9F5A /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,11 +84,12 @@
 			children = (
 				B137002228EECAC3007F4C5C /* AppDelegate.swift */,
 				B137002428EECAC3007F4C5C /* SceneDelegate.swift */,
+				B1C55ACF28F034B600DB9F5A /* Helpers */,
 				B143C61D28EEEB4100DAADE9 /* Cell */,
 				B143C62928EF4ABB00DAADE9 /* Network */,
 				B143C62628EF352800DAADE9 /* Model */,
+				B16620E328EF727E006CC0EB /* Home Screen */,
 				B137004428EEDD96007F4C5C /* SearchScreen */,
-				B16620E328EF727E006CC0EB /* HomeScreen */,
 				B137003C28EED945007F4C5C /* Favourite Screen */,
 				B137003D28EED96C007F4C5C /* Detail Screen */,
 				B137002B28EECAC4007F4C5C /* Assets.xcassets */,
@@ -133,6 +138,7 @@
 			children = (
 				B137004228EEDCF1007F4C5C /* SearchViewController.swift */,
 				B143C62028EF20F100DAADE9 /* SearchView.swift */,
+				B1C55ACD28F033F400DB9F5A /* SearchViewProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -164,12 +170,20 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		B16620E328EF727E006CC0EB /* HomeScreen */ = {
+		B16620E328EF727E006CC0EB /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
 				B137002628EECAC3007F4C5C /* HomeTabBarViewController.swift */,
 			);
-			path = HomeScreen;
+			path = "Home Screen";
+			sourceTree = "<group>";
+		};
+		B1C55ACF28F034B600DB9F5A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B1C55AD028F0356800DB9F5A /* AlertBuilder.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,11 +262,13 @@
 				B137002328EECAC3007F4C5C /* AppDelegate.swift in Sources */,
 				B137002528EECAC3007F4C5C /* SceneDelegate.swift in Sources */,
 				B137003F28EED9AC007F4C5C /* FavouritePicturesViewController.swift in Sources */,
+				B1C55ACE28F033F400DB9F5A /* SearchViewProtocol.swift in Sources */,
 				B143C63128EF4D8A00DAADE9 /* API.swift in Sources */,
 				B143C61F28EEF18B00DAADE9 /* ReusableViewProtocol.swift in Sources */,
 				B143C63328EF508700DAADE9 /* APIError.swift in Sources */,
 				B143C62D28EF4B2300DAADE9 /* NetworkDataFetch.swift in Sources */,
 				B143C61C28EEEB3E00DAADE9 /* SearchCollectionViewCell.swift in Sources */,
+				B1C55AD128F0356800DB9F5A /* AlertBuilder.swift in Sources */,
 				B143C62B28EF4AE000DAADE9 /* NetworkRequest.swift in Sources */,
 				B143C62828EF353E00DAADE9 /* PhotoModel.swift in Sources */,
 				B143C62F28EF4D2B00DAADE9 /* Secrets.swift in Sources */,

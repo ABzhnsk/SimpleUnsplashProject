@@ -80,3 +80,17 @@ extension SearchViewController: UISearchBarDelegate {
         searchView.searchBar.endEditing(true)
     }
 }
+
+// MARK: - SearchViewProtocol
+extension SearchViewController: SearchViewProtocol {
+    func success() {
+        searchView.collectionView.reloadData()
+    }
+    func failure(error: APIError) {
+        AlertBuilder()
+            .title("Error")
+            .message(error.errorDescription)
+            .action("OK")
+            .show(self, animated: true)
+    }
+}

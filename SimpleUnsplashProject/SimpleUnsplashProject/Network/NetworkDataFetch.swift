@@ -12,18 +12,18 @@ class NetworkDataFetch {
     
     private init() {}
     
-    func fetchPhoto(api: API, response: @escaping (PhotoModel?, APIError?) -> Void) {
+    func fetchPhoto(api: API, response: @escaping (Result<PhotoModel, APIError>) -> Void) {
         NetworkRequest.shared.requestData(api: api) { result in
             switch result {
             case .success(let data):
                 do {
                     let jsonData = try JSONDecoder().decode(PhotoModel.self, from: data)
-                    response(jsonData, nil)
+                    response(.success(jsonData))
                 } catch {
-                    response(nil, .decodeError)
+                    response(.failure(.decodeError))
                 }
             case .failure(_):
-                response(nil, .invalidDataError)
+                response(.failure(.invalidDataError))
             }
         }
     }
