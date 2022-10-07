@@ -16,7 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = HomeTabBarViewController()
+        let tabBarController = UITabBarController()
+        let builder = Builder()
+        let router = Router(tabBarController: tabBarController,
+                            builder: builder)
+        router.setupTabBar()
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 

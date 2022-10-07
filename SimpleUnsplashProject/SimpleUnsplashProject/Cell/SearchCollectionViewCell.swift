@@ -13,7 +13,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
     private let imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -26,7 +26,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     private func setupViews() {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = Constants.contentViewCornerRadius
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = .white
         contentView.addSubview(imageView)
     }
     private func setupConstraints() {
@@ -43,8 +43,9 @@ class SearchCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func config(image: UIImage?) {
-        self.imageView.image = image
+    func config(photo: Photos) {
+        guard let photoUrl = photo.urls?.full else { return }
+        self.imageView.load(from: photoUrl)
     }
 }
 

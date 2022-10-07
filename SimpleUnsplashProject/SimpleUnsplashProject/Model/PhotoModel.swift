@@ -10,10 +10,10 @@ import Foundation
 struct PhotoModel: Codable {
     let total: Int?
     let totalPages: Int?
-    let results: [ResultPhoto]?
+    let results: [Photos]
 }
 
-struct ResultPhoto: Codable {
+struct Photos: Codable {
     let id: String?
     let urls: Urls?
     let user: Users?

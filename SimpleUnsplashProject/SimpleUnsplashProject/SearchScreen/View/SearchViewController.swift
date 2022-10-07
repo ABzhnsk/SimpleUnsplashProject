@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    public var presenter: SearchPresenter!
+    
     private enum LayoutConstant {
         static let spacing: CGFloat = 8.0
     }
@@ -39,11 +41,12 @@ extension SearchViewController {
 // MARK: - UICollectionViewDataSource
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return presenter.getPictures().count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-        cell.config(image: UIImage(systemName: "house"))
+        let photos = presenter.getPictures()[indexPath.item]
+        cell.config(photo: photos)
         return cell
     }
 }
@@ -74,7 +77,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+        guard let query = searchBar.text else { return }
+        presenter.fetchData(with: query)
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchView.searchBar.endEditing(true)
