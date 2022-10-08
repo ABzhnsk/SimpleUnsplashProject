@@ -31,8 +31,10 @@ extension SearchViewController {
         searchView.collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
     }
     private func setupNavBar() {
-        navigationItem.titleView = searchView.searchBar
-        searchView.searchBar.delegate = self
+        navigationItem.title = "Search"
+        navigationItem.searchController = searchView.searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchView.searchController.searchBar.delegate = self
     }
 }
 
@@ -87,8 +89,8 @@ extension SearchViewController: UISearchBarDelegate {
         guard let query = searchBar.text else { return }
         presenter.fetchData(with: query)
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchView.searchBar.endEditing(true)
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter.fetchData(with: "")
     }
 }
 

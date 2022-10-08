@@ -15,7 +15,13 @@ final class SearchView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    private(set) var searchBar = UISearchBar()
+    private(set) var searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.tintColor = .black
+        return searchController
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
