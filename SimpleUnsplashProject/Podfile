@@ -6,6 +6,6 @@ target 'SimpleUnsplashProject' do
   use_frameworks!
 
   # Pods for SimpleUnsplashProject
-pod 'Kingfisher'
 pod 'SwiftyJSON'
+pod 'SDWebImage', '~> 5.0'
 end

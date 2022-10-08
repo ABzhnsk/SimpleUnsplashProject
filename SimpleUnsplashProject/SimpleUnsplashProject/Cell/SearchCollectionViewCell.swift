@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SearchCollectionViewCell: UICollectionViewCell {
     private enum Constants {
@@ -44,7 +45,8 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
     
     func config(photo: PhotoModel) {
-        self.imageView.load(from: photo.imageUrl)
+        let photoURL = URL(string: photo.imageUrl)
+        self.imageView.sd_setImage(with: photoURL, completed: nil)
     }
 }
 
