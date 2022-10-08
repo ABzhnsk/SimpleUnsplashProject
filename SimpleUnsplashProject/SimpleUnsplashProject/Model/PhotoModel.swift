@@ -13,13 +13,13 @@ struct PhotoModel: Codable {
     let userName: String
     let userLocation: String
     let createdAt: String
-    let likes: Int
+    let downloads: Int
     
     init(_ json: JSON) {
-        self.imageUrl = json["urls"]["full"].stringValue
+        self.imageUrl = json["urls"]["regular"].stringValue
         self.userName = json["user"]["username"].stringValue
         self.userLocation = json["user"]["location"].stringValue
         self.createdAt = json["created_at"].stringValue
-        self.likes = json["likes"].intValue
+        self.downloads = json["downloads"].intValue
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Anna Buzhinskaya on 07.10.2022.
 //
 
-import Foundation
+import UIKit
 
 class SearchPresenter {
     private let view: SearchViewProtocol
@@ -16,21 +16,26 @@ class SearchPresenter {
     init(view: SearchViewProtocol, router: RouterProtocol) {
         self.view = view
         self.router = router
-        fetchData(with: "random")
+        fetchData(with: "")
     }
     
     func fetchData(with query: String) {
         NetworkDataFetch.shared.fetchPhoto(api: .getSearch(query: query, page: self.page)) { [weak self] result in
-            switch result {
-            case .success(let photos):
-                self?.photos = photos
-                self?.view.success()
-            case .failure(let error):
-                self?.view.failure(error: error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let photos):
+                    self?.photos = photos
+                    self?.view.success()
+                case .failure(let error):
+                    self?.view.failure(error: error)
+                }
             }
         }
     }
     func getPictures() -> [PhotoModel] {
         return photos
+    }
+    func selectPhoto(photo: PhotoModel, image: UIImage) {
+        router.showDetailedViewFrom(searchPhoto: photo, image: image)
     }
 }

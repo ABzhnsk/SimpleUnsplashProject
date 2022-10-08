@@ -9,12 +9,10 @@ import UIKit
 import SDWebImage
 
 class SearchCollectionViewCell: UICollectionViewCell {
-    private enum Constants {
-        static let contentViewCornerRadius: CGFloat = 4.0
-    }
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .systemGray
         return imageView
     }()
     
@@ -26,8 +24,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     private func setupViews() {
         contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = Constants.contentViewCornerRadius
-        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = Constants.viewCornerRadius
         contentView.addSubview(imageView)
     }
     private func setupConstraints() {
@@ -42,11 +39,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func config(photo: PhotoModel) {
-        let photoURL = URL(string: photo.imageUrl)
-        self.imageView.sd_setImage(with: photoURL, completed: nil)
     }
 }
 

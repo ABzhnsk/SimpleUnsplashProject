@@ -19,7 +19,7 @@ class NetworkDataFetch {
             case .success(let data):
                 do {
                     let json = JSON(data)
-                    let photoJSON = json["results"].arrayValue.compactMap { PhotoModel($0) }
+                    let photoJSON = json[].arrayValue.compactMap { PhotoModel($0) }
                     response(.success(photoJSON))
                 } 
             case .failure(_):

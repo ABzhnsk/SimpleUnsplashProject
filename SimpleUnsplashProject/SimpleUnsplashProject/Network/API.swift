@@ -22,13 +22,13 @@ enum API {
     var path: String {
         switch self {
         case .getSearch:
-            return "/search/photos"
+            return "/photos/random"
         }
     }
     var query: [String: String] {
         switch self {
         case let .getSearch(query, page):
-            return ["query": query, "per_page": "\(page)"]
+            return ["query": query, "count": "\(30)", "per_page": "\(page)"]
         }
     }
     var header: [String: String] {

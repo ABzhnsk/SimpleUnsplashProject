@@ -71,7 +71,7 @@ class Router: RouterProtocol {
         parameters["userName"] = searchPhoto.userName
         parameters["userLocation"] = searchPhoto.userLocation
         parameters["createdAt"] = searchPhoto.createdAt
-        parameters["countLikes"] = Formatter.currency.string(from: NSNumber(value: searchPhoto.likes))
+        parameters["downloads"] = Formatter.currency.string(from: NSNumber(value: searchPhoto.downloads))
         guard let detailViewController = builder?.createDetailScreen(router: self,
                                                                      parameters: parameters,
                                                                      dataPicture: image)

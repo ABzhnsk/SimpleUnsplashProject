@@ -6,13 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SearchViewController: UIViewController {
     public var presenter: SearchPresenter!
     
-    private enum LayoutConstant {
-        static let spacing: CGFloat = 8.0
-    }
     private let searchView = SearchView()
 
     override func loadView() {
@@ -46,7 +44,8 @@ extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         let photos = presenter.getPictures()[indexPath.item]
-        cell.config(photo: photos)
+        let photoURL = URL(string: photos.imageUrl)
+        cell.imageView.sd_setImage(with: photoURL, completed: nil)
         return cell
     }
 }
@@ -54,7 +53,7 @@ extension SearchViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = itemWidth(for: view.frame.width, spacing: LayoutConstant.spacing)
+        let width = itemWidth(for: view.frame.width, spacing: Constants.spacing)
         return CGSize(width: width, height: width)
     }
     func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
@@ -64,13 +63,21 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         return floor(finalWidth)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: LayoutConstant.spacing, left: LayoutConstant.spacing, bottom: LayoutConstant.spacing, right: LayoutConstant.spacing)
+        return UIEdgeInsets(top: Constants.spacing, left: Constants.spacing, bottom: Constants.spacing, right: Constants.spacing)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return LayoutConstant.spacing
+        return Constants.spacing
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return LayoutConstant.spacing
+        return Constants.spacing
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photoModel = presenter.getPictures()[indexPath.row]
+        let imageView = UIImageView()
+        let photoURL = URL(string: photoModel.imageUrl)
+        imageView.sd_setImage(with: photoURL, completed: nil)
+        guard let image = imageView.image else { return }
+        presenter.selectPhoto(photo: photoModel, image: image)
     }
 }
 
