@@ -9,6 +9,7 @@ import Foundation
 import SwiftyJSON
 
 struct PhotoModel: Codable {
+    let id: String
     let imageUrl: String
     let userName: String
     let userLocation: String
@@ -16,6 +17,7 @@ struct PhotoModel: Codable {
     let downloads: Int
     
     init(_ json: JSON) {
+        self.id = json["id"].stringValue
         self.imageUrl = json["urls"]["regular"].stringValue
         self.userName = json["user"]["username"].stringValue
         self.userLocation = json["user"]["location"].stringValue

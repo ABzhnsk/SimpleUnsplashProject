@@ -75,11 +75,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photoModel = presenter.getPictures()[indexPath.row]
-        let imageView = UIImageView()
-        let photoURL = URL(string: photoModel.imageUrl)
-        imageView.sd_setImage(with: photoURL, completed: nil)
-        guard let image = imageView.image else { return }
-        presenter.selectPhoto(photo: photoModel, image: image)
+        presenter.selectPhoto(photo: photoModel)
     }
 }
 

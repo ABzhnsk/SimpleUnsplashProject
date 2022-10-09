@@ -26,6 +26,12 @@ final class AlertBuilder {
         actions.append(UIAlertAction(title: title, style: .default, handler: handler))
         return self
     }
+    func cancelAction(_ title: String) -> Builder {
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+        actions.append(cancelAction)
+        return self
+    }
     func build() -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         for action in actions {

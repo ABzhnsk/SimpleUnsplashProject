@@ -7,7 +7,8 @@
 
 import CoreData
 
-open class DataStoreManager {
+open class CoreDataManager {
+    //MARK: - CoreData
     public static let modelName = "SimpleUnsplashDB"
     public static let model: NSManagedObjectModel = {
         let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd")!
@@ -21,8 +22,8 @@ open class DataStoreManager {
     }()
 
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: DataStoreManager.modelName,
-                                              managedObjectModel: DataStoreManager.model)
+        let container = NSPersistentContainer(name: CoreDataManager.modelName,
+                                              managedObjectModel: CoreDataManager.model)
         container.loadPersistentStores { _, error in
           if let error = error as NSError? {
             fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -30,36 +31,72 @@ open class DataStoreManager {
         }
         return container
       }()
-
-    // MARK: - Core Data Saving support
-    public func newDerivedContext() -> NSManagedObjectContext {
-        let context = persistentContainer.newBackgroundContext()
-        return context
+    
+    private var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
     }
-
-    public func saveContext(_ context: NSManagedObjectContext) {
-      if context != mainContext {
-        saveDerivedContext(context)
-        return
-      }
-
-      context.perform {
+    
+    //MARK: - CRUD
+    func fetchPhotoCoreData(completion: (Result<[FavouritePhoto], Error>) -> Void) {
+        let request = FavouritePhoto.fetchRequest()
+        let dateOrder = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [dateOrder]
         do {
-          try context.save()
-        } catch let error as NSError {
-          fatalError("Unresolved error \(error), \(error.userInfo)")
+            let fetchResult = try context.fetch(request)
+            completion(.success(fetchResult))
+        } catch {
+            completion(.failure(error))
         }
-      }
     }
-
-    public func saveDerivedContext(_ context: NSManagedObjectContext) {
-      context.perform {
-        do {
-          try context.save()
-        } catch let error as NSError {
-          fatalError("Unresolved error \(error), \(error.userInfo)")
+    func savePhotoCoreData(photoViewModel: PhotoModel, completion: (Result<Bool, Error>) -> Void) {
+        let entity = NSEntityDescription.entity(forEntityName: "FavouritePhoto", in: context)
+        if let entity = entity {
+            let managedObject = NSManagedObject(entity: entity, insertInto: context)
+            managedObject.setValue(photoViewModel.downloads, forKey: "downloads")
+            managedObject.setValue(photoViewModel.createdAt, forKey: "createdAt")
+            managedObject.setValue(photoViewModel.imageUrl, forKey: "imageUrl")
+            managedObject.setValue(photoViewModel.userLocation, forKey: "userLocation")
+            managedObject.setValue(photoViewModel.userName, forKey: "userName")
+            managedObject.setValue(photoViewModel.id, forKey: "id")
+            do {
+                try context.save()
+                completion(.success(true))
+            } catch {
+                completion(.failure(error))
+            }
         }
-        self.saveContext(self.mainContext)
-      }
+    }
+    func deletePhotoCoreData(photoViewModel: PhotoModel, completion: (Result<Bool, Error>) -> Void) {
+        let id = photoViewModel.id
+        let request = FavouritePhoto.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+        do {
+            let fetchResult = try context.fetch(request)
+            if let targetPhotoEntity = fetchResult.first {
+                context.delete(targetPhotoEntity)
+                do {
+                    try context.save()
+                    completion(.success(true))
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    func isExistPhotoCoreData(id: String, completion: (Result<Bool, Error>) -> Void) {
+        let request = FavouritePhoto.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+        do {
+            let fetchResult = try context.fetch(request)
+            if !fetchResult.isEmpty {
+                completion(.success(true))
+            } else {
+                completion(.success(false))
+            }
+        } catch {
+            completion(.failure(error))
+        }
     }
 }

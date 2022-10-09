@@ -67,6 +67,7 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    var presenter: DetailsViewPresenter!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -75,12 +76,14 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        fetchStateButton()
     }
 }
 
 // MARK: - UI settings
 extension DetailsViewController {
     private func setupUI() {
+        setupLabel()
         view.backgroundColor = .white
         view.addSubview(imageView)
         view.addSubview(likeButton)
@@ -94,8 +97,8 @@ extension DetailsViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 2),
-            imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -2),
+            imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+            imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
             imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300)
         ])
     }
@@ -126,11 +129,43 @@ extension DetailsViewController {
         navigationItem.title = titleLabel.text
         navigationController?.navigationBar.tintColor = .black
     }
+    private func setupLabel() {
+        let isoDate = DateFormatter.isoDate.date(from: presenter.model.createdAt)
+        let date = DateFormatter.date.string(from: isoDate ?? Date())
+        let photoURL = URL(string: presenter.model.imageUrl)
+        titleLabel.text = presenter.model.userName
+        authorNameLabel.text = "Author: \(presenter.model.userName)"
+        locationLabel.text = "Location: \(presenter.model.userLocation)"
+        dateCreateLabel.text = "Created at: \(date)"
+        downloadsLabel.text = "Downloads: \(presenter.model.downloads)"
+        imageView.sd_setImage(with: photoURL)
+    }
+    private func fetchStateButton() {
+        DispatchQueue.main.async { [weak self] in
+            guard let isHeartSelected = self?.presenter.isHeartSelected else {
+                return
+            }
+            self?.likeButton.tintColor = isHeartSelected ? .red : .white
+        }
+        presenter.fetchButtonIsLike()
+    }
 }
 
 // MARK: - Actions
 extension DetailsViewController {
     @objc private func likeButtonTapped() {
-        
+        fetchStateButton()
+        presenter.fetchLikePhoto()
+    }
+}
+
+// MARK: - DetailsViewProtocol
+extension DetailsViewController: DetailsViewProtocol {
+    func errorCoreData(with message: String) {
+        AlertBuilder()
+            .title("Error")
+            .message(message)
+            .action("OK")
+            .show(self, animated: true)
     }
 }

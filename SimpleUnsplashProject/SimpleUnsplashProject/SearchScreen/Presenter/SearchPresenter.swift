@@ -35,7 +35,7 @@ class SearchPresenter {
     func getPictures() -> [PhotoModel] {
         return photos
     }
-    func selectPhoto(photo: PhotoModel, image: UIImage) {
-        router.showDetailedViewFrom(searchPhoto: photo, image: image)
+    func selectPhoto(photo: PhotoModel) {
+        router.showDetailedView(from: photo)
     }
 }

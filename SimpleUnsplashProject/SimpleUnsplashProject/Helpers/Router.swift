@@ -14,8 +14,7 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func setupTabBar()
-    func showDetailedViewFrom(searchPhoto: PhotoModel, image: UIImage)
-    func showDetailedViewFrom(favoritePhoto: FavouritePhoto, image: UIImage)
+    func showDetailedView(from searchPhoto: PhotoModel)
 }
 
 class Router: RouterProtocol {
@@ -66,29 +65,9 @@ class Router: RouterProtocol {
             tabBarController.tabBar.tintColor = .black
         }
     }
-    public func showDetailedViewFrom(searchPhoto: PhotoModel, image: UIImage) {
-        var parameters = [String: String]()
-        parameters["userName"] = searchPhoto.userName
-        parameters["userLocation"] = searchPhoto.userLocation
-        parameters["createdAt"] = searchPhoto.createdAt
-        parameters["downloads"] = Formatter.currency.string(from: NSNumber(value: searchPhoto.downloads))
-        guard let detailViewController = builder?.createDetailScreen(router: self,
-                                                                     parameters: parameters,
-                                                                     dataPicture: image)
+    public func showDetailedView(from searchPhoto: PhotoModel) {
+        guard let detailViewController = builder?.createDetailScreen(model: searchPhoto)
         else { return }
         searchNavigationController.pushViewController(detailViewController, animated: true)
-    }
-    public func showDetailedViewFrom(favoritePhoto: FavouritePhoto, image: UIImage) {
-        var parameters = [String: String]()
-        parameters["userName"] = favoritePhoto.userName
-        parameters["userLocation"] = favoritePhoto.userLocation
-        parameters["createdAt"] = favoritePhoto.createdAt
-        parameters["countLikes"] = Formatter.currency.string(from: NSNumber(value: favoritePhoto.countLikes))
-        
-        guard let detailViewController = builder?.createDetailScreen(router: self,
-                                                                     parameters: parameters,
-                                                                     dataPicture: image)
-        else { return }
-        favoriteNavigationController.pushViewController(detailViewController, animated: true)
     }
 }

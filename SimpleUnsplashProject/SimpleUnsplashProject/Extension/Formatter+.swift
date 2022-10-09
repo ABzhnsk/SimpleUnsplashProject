@@ -17,6 +17,12 @@ extension Formatter {
         return formatter
     }()
 
+    static let isoDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return formatter
+    }()
+    
     static let date: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
