@@ -127,7 +127,6 @@ extension DetailsViewController {
     }
     private func setupNavBar() {
         navigationItem.title = titleLabel.text
-        navigationController?.navigationBar.tintColor = .black
     }
     private func setupLabel() {
         let isoDate = DateFormatter.isoDate.date(from: presenter.model.createdAt)

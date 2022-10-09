@@ -55,7 +55,7 @@ class FavouriteTableViewCell: UITableViewCell {
         ])
     }
     
-    func configure(from model: Photo) {
+    func configure(from model: PhotoModel) {
         let imageURL = model.imageUrl
         photoImageView.sd_setImage(with: URL(string: imageURL))
         authorNameLabel.text = model.userName

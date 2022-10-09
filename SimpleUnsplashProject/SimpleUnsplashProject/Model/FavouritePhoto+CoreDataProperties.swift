@@ -22,5 +22,5 @@ extension FavouritePhoto {
     @NSManaged public var userLocation: String?
     @NSManaged public var userName: String?
     @NSManaged public var id: String?
-
+    @NSManaged public var date: Date?
 }

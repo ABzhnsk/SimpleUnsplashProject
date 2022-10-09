@@ -10,7 +10,8 @@ import UIKit
 class SearchPresenter {
     private let view: SearchViewProtocol
     private let router: RouterProtocol
-    private var photos: [PhotoModel] = []
+    private var resultsModel: [ResultsModel] = []
+    private var photoModel: [PhotoModel] = []
     private var page = 30
 
     init(view: SearchViewProtocol, router: RouterProtocol) {
@@ -24,7 +25,8 @@ class SearchPresenter {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let photos):
-                    self?.photos = photos
+                    let photoModel = photos.compactMap { self?.createPhotoModel(from: $0) }
+                    self?.photoModel = photoModel
                     self?.view.success()
                 case .failure(let error):
                     self?.view.failure(error: error)
@@ -33,9 +35,18 @@ class SearchPresenter {
         }
     }
     func getPictures() -> [PhotoModel] {
-        return photos
+        return photoModel
     }
-    func selectPhoto(photo: PhotoModel) {
-        router.showDetailedViewFromSearchView(with: photo)
+    func selectPhoto(from model: PhotoModel) {
+        router.showDetailedViewFromSearchView(with: model)
+    }
+    
+    private func createPhotoModel(from results: ResultsModel) -> PhotoModel {
+        return PhotoModel(id: results.id,
+                          imageUrl: results.imageUrl,
+                          userName: results.userName,
+                          userLocation: results.userLocation,
+                          createdAt: results.createdAt,
+                          downloads: results.downloads)
     }
 }

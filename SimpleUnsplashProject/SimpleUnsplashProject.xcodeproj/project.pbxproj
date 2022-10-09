@@ -18,7 +18,7 @@
 		B143C61C28EEEB3E00DAADE9 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C61B28EEEB3D00DAADE9 /* SearchCollectionViewCell.swift */; };
 		B143C61F28EEF18B00DAADE9 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C61E28EEF18B00DAADE9 /* ReusableViewProtocol.swift */; };
 		B143C62128EF20F100DAADE9 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C62028EF20F100DAADE9 /* SearchView.swift */; };
-		B143C62828EF353E00DAADE9 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C62728EF353E00DAADE9 /* PhotoModel.swift */; };
+		B143C62828EF353E00DAADE9 /* ResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C62728EF353E00DAADE9 /* ResultsModel.swift */; };
 		B143C62B28EF4AE000DAADE9 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C62A28EF4AE000DAADE9 /* NetworkRequest.swift */; };
 		B143C62D28EF4B2300DAADE9 /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C62C28EF4B2300DAADE9 /* NetworkDataFetch.swift */; };
 		B143C62F28EF4D2B00DAADE9 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B143C62E28EF4D2B00DAADE9 /* Secrets.swift */; };
@@ -29,7 +29,7 @@
 		B180C15528F2F20A00E6111C /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180C15428F2F20A00E6111C /* FavouriteTableViewCell.swift */; };
 		B180C15728F33D5100E6111C /* FavouritePicturesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180C15628F33D5100E6111C /* FavouritePicturesViewProtocol.swift */; };
 		B180C15A28F3406000E6111C /* FavouritePicturesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180C15928F3406000E6111C /* FavouritePicturesPresenter.swift */; };
-		B180C15C28F3430800E6111C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180C15B28F3430800E6111C /* Photo.swift */; };
+		B180C15C28F3430800E6111C /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180C15B28F3430800E6111C /* PhotoModel.swift */; };
 		B180C15E28F347C500E6111C /* NotificationName+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180C15D28F347C500E6111C /* NotificationName+.swift */; };
 		B189777228F1CA76003AF484 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189777128F1CA76003AF484 /* Constants.swift */; };
 		B1B30D6028F21E6A00461304 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B30D5F28F21E6A00461304 /* UILabel+.swift */; };
@@ -59,7 +59,7 @@
 		B143C61B28EEEB3D00DAADE9 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		B143C61E28EEF18B00DAADE9 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		B143C62028EF20F100DAADE9 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		B143C62728EF353E00DAADE9 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		B143C62728EF353E00DAADE9 /* ResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsModel.swift; sourceTree = "<group>"; };
 		B143C62A28EF4AE000DAADE9 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		B143C62C28EF4B2300DAADE9 /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
 		B143C62E28EF4D2B00DAADE9 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		B180C15428F2F20A00E6111C /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		B180C15628F33D5100E6111C /* FavouritePicturesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePicturesViewProtocol.swift; sourceTree = "<group>"; };
 		B180C15928F3406000E6111C /* FavouritePicturesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePicturesPresenter.swift; sourceTree = "<group>"; };
-		B180C15B28F3430800E6111C /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B180C15B28F3430800E6111C /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		B180C15D28F347C500E6111C /* NotificationName+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+.swift"; sourceTree = "<group>"; };
 		B189777128F1CA76003AF484 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B1B30D5F28F21E6A00461304 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
@@ -209,8 +209,8 @@
 			children = (
 				B1B30D6128F22F3A00461304 /* FavouritePhoto+CoreDataClass.swift */,
 				B1B30D6228F22F3A00461304 /* FavouritePhoto+CoreDataProperties.swift */,
-				B143C62728EF353E00DAADE9 /* PhotoModel.swift */,
-				B180C15B28F3430800E6111C /* Photo.swift */,
+				B143C62728EF353E00DAADE9 /* ResultsModel.swift */,
+				B180C15B28F3430800E6111C /* PhotoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 				B1C55ACE28F033F400DB9F5A /* SearchViewProtocol.swift in Sources */,
 				B143C63128EF4D8A00DAADE9 /* API.swift in Sources */,
 				B143C61F28EEF18B00DAADE9 /* ReusableViewProtocol.swift in Sources */,
-				B180C15C28F3430800E6111C /* Photo.swift in Sources */,
+				B180C15C28F3430800E6111C /* PhotoModel.swift in Sources */,
 				B143C63328EF508700DAADE9 /* APIError.swift in Sources */,
 				B143C62D28EF4B2300DAADE9 /* NetworkDataFetch.swift in Sources */,
 				B1C55ADD28F03A8500DB9F5A /* CoreDataManager.swift in Sources */,
@@ -440,7 +440,7 @@
 				B180C15728F33D5100E6111C /* FavouritePicturesViewProtocol.swift in Sources */,
 				B1DCDAE328F042A3003D02F2 /* Formatter+.swift in Sources */,
 				B143C62B28EF4AE000DAADE9 /* NetworkRequest.swift in Sources */,
-				B143C62828EF353E00DAADE9 /* PhotoModel.swift in Sources */,
+				B143C62828EF353E00DAADE9 /* ResultsModel.swift in Sources */,
 				B143C62F28EF4D2B00DAADE9 /* Secrets.swift in Sources */,
 				B1C55ADA28F03A1500DB9F5A /* SimpleUnsplashDB.xcdatamodeld in Sources */,
 				B137004128EED9F5007F4C5C /* DetailsViewController.swift in Sources */,

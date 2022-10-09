@@ -11,7 +11,7 @@ class FavouritePicturesPresenter {
     private let view: FavouritePicturesViewProtocol
     private let router: RouterProtocol
     private let coreDataManager: CoreDataManager
-    private var photos: [Photo] = []
+    private var photos: [PhotoModel] = []
     
     init(view: FavouritePicturesViewProtocol,
          router: RouterProtocol,
@@ -34,16 +34,31 @@ class FavouritePicturesPresenter {
             }
         }
     }
-    func getPhotos() -> [Photo] {
+    func getPhotos() -> [PhotoModel] {
         return photos
     }
+    func selectPhoto(from model: PhotoModel) {
+        router.showDetailedViewFromFavouriteView(with: model)
+    }
+    func deleteFavouritesPhoto(from model: PhotoModel, indexPath: IndexPath) {
+        coreDataManager.deletePhotoCoreData(photoViewModel: model) { result in
+            switch result {
+            case .success(let success):
+                if success {
+                    photos.remove(at: indexPath.row)
+                }
+            case.failure(let error):
+                view.errorCoreData(with: error.localizedDescription)
+            }
+        }
+    }
     
-    private func createPhotoModel(photoCoreData: FavouritePhoto) -> Photo {
-        return Photo(id: photoCoreData.id ?? "",
-                     imageUrl: photoCoreData.imageUrl ?? "",
-                     userName: photoCoreData.userName ?? "",
-                     userLocation: photoCoreData.userLocation ?? "",
-                     createdAt: photoCoreData.createdAt ?? "",
-                     downloads: Int(photoCoreData.downloads))
+    private func createPhotoModel(photoCoreData: FavouritePhoto) -> PhotoModel {
+        return PhotoModel(id: photoCoreData.id ?? "",
+                          imageUrl: photoCoreData.imageUrl ?? "",
+                          userName: photoCoreData.userName ?? "",
+                          userLocation: photoCoreData.userLocation ?? "",
+                          createdAt: photoCoreData.createdAt ?? "",
+                          downloads: Int(photoCoreData.downloads))
     }
 }

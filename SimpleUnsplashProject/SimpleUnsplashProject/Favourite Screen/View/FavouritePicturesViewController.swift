@@ -61,7 +61,7 @@ extension FavouritePicturesViewController {
         ])
     }
     private func setupNavBar() {
-        navigationItem.title = "Favorite"
+        navigationItem.title = "Favorites"
     }
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(fetch), name: Notification.Name.heartButtonClicked, object: nil)
@@ -76,12 +76,35 @@ extension FavouritePicturesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.getPhotos().count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.identifier, for: indexPath) as? FavouriteTableViewCell else { return UITableViewCell() }
         let photo = presenter.getPhotos()[indexPath.row]
         cell.configure(from: photo)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let photoModel = presenter.getPhotos()[indexPath.row]
+        presenter.selectPhoto(from: photoModel)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let photoModel = presenter.getPhotos()[indexPath.row]
+        if editingStyle == .delete {
+            AlertBuilder()
+                .title("Warning")
+                .message("Are you sure you want to delete this photo?")
+                .action("Yes", handler: { [weak self] action in
+                    self?.presenter.deleteFavouritesPhoto(from: photoModel, indexPath: indexPath)
+                    tableView.deleteRows(at: [indexPath], with: .none)
+                     self?.success()
+                })
+                .cancelAction("Cancel")
+                .show(self, animated: true)
+        }
+        
     }
 }
 

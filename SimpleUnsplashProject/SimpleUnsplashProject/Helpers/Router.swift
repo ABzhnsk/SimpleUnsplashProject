@@ -31,16 +31,10 @@ class Router: RouterProtocol {
     }
     
     private func wrappedInNavigationController(image: UIImage,
-                                               tabBarItemTitle: String,
                                                rootViewController: UIViewController) -> UINavigationController {
-        let appearence = UINavigationBarAppearance()
-        appearence.configureWithOpaqueBackground()
-        appearence.backgroundColor = .white
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.tabBarItem.image = image
-        navigationController.tabBarItem.title = tabBarItemTitle
-        navigationController.navigationBar.standardAppearance = appearence
-        navigationController.navigationBar.scrollEdgeAppearance = navigationController.navigationBar.standardAppearance
+        navigationController.navigationBar.tintColor = .black
         return navigationController
     }
     
@@ -55,14 +49,10 @@ class Router: RouterProtocol {
                   let favoriteViewController = builder?.createFavoriteScreen(router: self)
             else { return }
             searchNavigationController = wrappedInNavigationController(image: imageSearch!,
-                                                                       tabBarItemTitle: "Search",
                                                                        rootViewController: searchViewController)
             favoriteNavigationController = wrappedInNavigationController(image: imageLike!,
-                                                                         tabBarItemTitle: "Favorites",
                                                                          rootViewController: favoriteViewController)
             tabBarController.viewControllers = [searchNavigationController, favoriteNavigationController]
-            tabBarController.tabBar.backgroundColor = .white
-            tabBarController.tabBar.barStyle = .default
             tabBarController.tabBar.tintColor = .black
         }
     }

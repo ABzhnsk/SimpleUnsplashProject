@@ -39,8 +39,8 @@ open class CoreDataManager {
     //MARK: - CRUD
     func fetchPhotoCoreData(completion: (Result<[FavouritePhoto], Error>) -> Void) {
         let request = FavouritePhoto.fetchRequest()
-        let id = NSSortDescriptor(key: "id", ascending: false)
-        request.sortDescriptors = [id]
+        let dateOrder = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [dateOrder]
         do {
             let fetchResult = try context.fetch(request)
             completion(.success(fetchResult))
@@ -58,6 +58,7 @@ open class CoreDataManager {
             managedObject.setValue(photoViewModel.userLocation, forKey: "userLocation")
             managedObject.setValue(photoViewModel.userName, forKey: "userName")
             managedObject.setValue(photoViewModel.id, forKey: "id")
+            managedObject.setValue(Date(), forKey: "date")
             do {
                 try context.save()
                 completion(.success(true))
