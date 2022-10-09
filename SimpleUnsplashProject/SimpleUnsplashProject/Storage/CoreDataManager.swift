@@ -1,5 +1,5 @@
 //
-//  DataStorageManager.swift
+//  CoreDataManager.swift
 //  SimpleUnsplashProject
 //
 //  Created by Anna Buzhinskaya on 07.10.2022.
@@ -39,8 +39,8 @@ open class CoreDataManager {
     //MARK: - CRUD
     func fetchPhotoCoreData(completion: (Result<[FavouritePhoto], Error>) -> Void) {
         let request = FavouritePhoto.fetchRequest()
-        let dateOrder = NSSortDescriptor(key: "date", ascending: false)
-        request.sortDescriptors = [dateOrder]
+        let id = NSSortDescriptor(key: "id", ascending: false)
+        request.sortDescriptors = [id]
         do {
             let fetchResult = try context.fetch(request)
             completion(.success(fetchResult))

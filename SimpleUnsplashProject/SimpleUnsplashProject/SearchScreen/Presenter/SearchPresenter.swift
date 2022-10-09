@@ -36,6 +36,6 @@ class SearchPresenter {
         return photos
     }
     func selectPhoto(photo: PhotoModel) {
-        router.showDetailedView(from: photo)
+        router.showDetailedViewFromSearchView(with: photo)
     }
 }

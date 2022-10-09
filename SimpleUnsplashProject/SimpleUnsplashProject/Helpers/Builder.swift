@@ -10,7 +10,7 @@ import UIKit
 protocol BuilderProtocol: AnyObject {
     func createSearchScreen(router: RouterProtocol) -> UIViewController
     func createFavoriteScreen(router: RouterProtocol) -> UIViewController
-    func createDetailScreen(model: PhotoModel) -> UIViewController
+    func createDetailScreenFrom(model: PhotoModel) -> UIViewController
 }
 
 class Builder: BuilderProtocol {
@@ -26,10 +26,12 @@ class Builder: BuilderProtocol {
     
     func createFavoriteScreen(router: RouterProtocol) -> UIViewController {
         let view = FavouritePicturesViewController()
+        let presenter = FavouritePicturesPresenter(view: view, router: router, coreDataManager: dataStoreManager)
+        view.presenter = presenter
         return view
     }
     
-    func createDetailScreen(model: PhotoModel) -> UIViewController {
+    func createDetailScreenFrom(model: PhotoModel) -> UIViewController {
         let view = DetailsViewController()
         let presenter = DetailsViewPresenter(view: view,
                                              dataStorageManager: dataStoreManager,

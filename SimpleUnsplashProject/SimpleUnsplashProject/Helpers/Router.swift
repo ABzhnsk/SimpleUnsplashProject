@@ -14,7 +14,8 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func setupTabBar()
-    func showDetailedView(from searchPhoto: PhotoModel)
+    func showDetailedViewFromSearchView(with searchPhoto: PhotoModel)
+    func showDetailedViewFromFavouriteView(with favouritePhoto: PhotoModel)
 }
 
 class Router: RouterProtocol {
@@ -65,9 +66,14 @@ class Router: RouterProtocol {
             tabBarController.tabBar.tintColor = .black
         }
     }
-    public func showDetailedView(from searchPhoto: PhotoModel) {
-        guard let detailViewController = builder?.createDetailScreen(model: searchPhoto)
+    public func showDetailedViewFromSearchView(with searchPhoto: PhotoModel) {
+        guard let detailViewController = builder?.createDetailScreenFrom(model: searchPhoto)
         else { return }
         searchNavigationController.pushViewController(detailViewController, animated: true)
+    }
+    public func showDetailedViewFromFavouriteView(with favouritePhoto: PhotoModel) {
+        guard let detailViewController = builder?.createDetailScreenFrom(model: favouritePhoto)
+        else { return }
+        favoriteNavigationController.pushViewController(detailViewController, animated: true)
     }
 }

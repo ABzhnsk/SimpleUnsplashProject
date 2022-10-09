@@ -47,6 +47,7 @@ class DetailsViewPresenter {
                 } else {
                     self?.savePhotoCoreData()
                 }
+                self?.postNotificationHeart()
             case .failure(let error):
                 self?.view.errorCoreData(with: error.localizedDescription)
             }
@@ -77,5 +78,7 @@ class DetailsViewPresenter {
             }
         }
     }
-
+    private func postNotificationHeart() {
+        NotificationCenter.default.post(name: Notification.Name.heartButtonClicked, object: nil)
+    }
 }
