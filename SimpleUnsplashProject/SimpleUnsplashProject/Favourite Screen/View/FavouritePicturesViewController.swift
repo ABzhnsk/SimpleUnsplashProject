@@ -61,7 +61,7 @@ extension FavouritePicturesViewController {
         ])
     }
     private func setupNavBar() {
-        navigationItem.title = "Favorites"
+        navigationItem.title = "Favourites"
     }
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(fetch), name: Notification.Name.heartButtonClicked, object: nil)
