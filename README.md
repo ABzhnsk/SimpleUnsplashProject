@@ -1,6 +1,17 @@
 # Simple Unsplash Project
- 
+
 This app is looking for photos via Unsplash API
+
+# Stack
+
+- MVP
+- CoreData
+- URLSession
+- SwiftyJSON
+- AutoLayout
+
+
+# Using
 
 - Searching photo
 
@@ -18,10 +29,4 @@ This app is looking for photos via Unsplash API
 
 ![image](https://github.com/ABzhnsk/SimpleUnsplashProject/blob/main/Four.gif)
 
-# Stack
 
-- MVP
-- CoreData
-- URLSession
-- SwiftyJSON
-- AutoLayout
