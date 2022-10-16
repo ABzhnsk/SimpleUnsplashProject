@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/ABzhnsk/Desktop/Interview/SimpleUnsplashProject/SimpleUnsplashProject/SimpleUnsplashProject/Model/FavouritePhoto+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/ABzhnsk/Desktop/Interview/SimpleUnsplashProject/SimpleUnsplashProject/SimpleUnsplashProject/Model/FavouritePhoto+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:SimpleUnsplashProject.xcodeproj">
    </FileRef>
    <FileRef

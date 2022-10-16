@@ -33,8 +33,6 @@
 		B180C15E28F347C500E6111C /* NotificationName+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180C15D28F347C500E6111C /* NotificationName+.swift */; };
 		B189777228F1CA76003AF484 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189777128F1CA76003AF484 /* Constants.swift */; };
 		B1B30D6028F21E6A00461304 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B30D5F28F21E6A00461304 /* UILabel+.swift */; };
-		B1B30D6328F22F3A00461304 /* FavouritePhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B30D6128F22F3A00461304 /* FavouritePhoto+CoreDataClass.swift */; };
-		B1B30D6428F22F3A00461304 /* FavouritePhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B30D6228F22F3A00461304 /* FavouritePhoto+CoreDataProperties.swift */; };
 		B1C55ACE28F033F400DB9F5A /* SearchViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C55ACD28F033F400DB9F5A /* SearchViewProtocol.swift */; };
 		B1C55AD128F0356800DB9F5A /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C55AD028F0356800DB9F5A /* AlertBuilder.swift */; };
 		B1C55AD328F036E300DB9F5A /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C55AD228F036E300DB9F5A /* SearchPresenter.swift */; };
@@ -74,8 +72,6 @@
 		B180C15D28F347C500E6111C /* NotificationName+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+.swift"; sourceTree = "<group>"; };
 		B189777128F1CA76003AF484 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B1B30D5F28F21E6A00461304 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
-		B1B30D6128F22F3A00461304 /* FavouritePhoto+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePhoto+CoreDataClass.swift"; path = "/Users/ABzhnsk/Desktop/Interview/SimpleUnsplashProject/SimpleUnsplashProject/SimpleUnsplashProject/Model/FavouritePhoto+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		B1B30D6228F22F3A00461304 /* FavouritePhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePhoto+CoreDataProperties.swift"; path = "/Users/ABzhnsk/Desktop/Interview/SimpleUnsplashProject/SimpleUnsplashProject/SimpleUnsplashProject/Model/FavouritePhoto+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B1C55ACD28F033F400DB9F5A /* SearchViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewProtocol.swift; sourceTree = "<group>"; };
 		B1C55AD028F0356800DB9F5A /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		B1C55AD228F036E300DB9F5A /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
@@ -207,8 +203,6 @@
 		B143C62628EF352800DAADE9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B1B30D6128F22F3A00461304 /* FavouritePhoto+CoreDataClass.swift */,
-				B1B30D6228F22F3A00461304 /* FavouritePhoto+CoreDataProperties.swift */,
 				B143C62728EF353E00DAADE9 /* ResultsModel.swift */,
 				B180C15B28F3430800E6111C /* PhotoModel.swift */,
 			);
@@ -413,7 +407,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B137004328EEDCF1007F4C5C /* SearchViewController.swift in Sources */,
-				B1B30D6328F22F3A00461304 /* FavouritePhoto+CoreDataClass.swift in Sources */,
 				B143C62128EF20F100DAADE9 /* SearchView.swift in Sources */,
 				B1C55AD328F036E300DB9F5A /* SearchPresenter.swift in Sources */,
 				B137002328EECAC3007F4C5C /* AppDelegate.swift in Sources */,
@@ -421,7 +414,6 @@
 				B189777228F1CA76003AF484 /* Constants.swift in Sources */,
 				B180C15528F2F20A00E6111C /* FavouriteTableViewCell.swift in Sources */,
 				B1C55AD528F0388000DB9F5A /* Router.swift in Sources */,
-				B1B30D6428F22F3A00461304 /* FavouritePhoto+CoreDataProperties.swift in Sources */,
 				B137003F28EED9AC007F4C5C /* FavouritePicturesViewController.swift in Sources */,
 				B177A7AF28F237D70064506C /* DetailsViewPresenter.swift in Sources */,
 				B180C15A28F3406000E6111C /* FavouritePicturesPresenter.swift in Sources */,
